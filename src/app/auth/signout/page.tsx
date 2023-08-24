@@ -1,8 +1,8 @@
-import {signOut } from "next-auth/react";
+import { signOut } from "next-auth/react";
 
 export default function Signout() {
-  if (typeof window !== 'undefined') {
-    signOut({ callbackUrl: "/" })
+  if (typeof window !== "undefined") {
+    signOut({ callbackUrl: "/" });
   }
   return null;
 }

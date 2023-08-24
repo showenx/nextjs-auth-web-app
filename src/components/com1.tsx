@@ -1,6 +1,6 @@
 "use client";
 
-import { signIn } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 import React from "react";
 const Com1 = () => {
   return (
@@ -11,6 +11,13 @@ const Com1 = () => {
         }}
       >
         Sign In
+      </button>
+      <button
+        onClick={() => {
+          signOut();
+        }}
+      >
+        Sign Out
       </button>
     </div>
   );
