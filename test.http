@@ -1,0 +1,10 @@
+### sd
+GET https://qlogisticsau.b2clogin.com/qlogisticsau.onmicrosoft.com/b2c_1_rule1/oauth2/v2.0/authorize?client_id=9f0fbef3-a7bf-43b6-b991-879f403954fe&scope=offline_access%20openid&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Fauth%2Fcallback%2Fazure-ad-b2c&code_challenge=BidjojMNfIXT34JnjcYUffs5rAGHkuQLxh6-4SRpNr0&code_challenge_method=S256
+
+
+###
+GET https://qlogisticsau.b2clogin.com/qlogisticsau.onmicrosoft.com/b2c_1_rule1/oauth2/v2.0/authorize?client_id=9f0fbef3-a7bf-43b6-b991-879f403954fe
+&nonce=anyRandomValue
+&redirect_uri=https://jwt.ms
+&scope=<application-ID-URI>/<scope-name>
+&response_type=code
