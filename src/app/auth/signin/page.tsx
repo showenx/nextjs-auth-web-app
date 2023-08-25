@@ -1,8 +1,10 @@
+"use client";
+
 import { signIn } from "next-auth/react";
+import { useEffect } from "react";
 
 export default async function SignIn() {
-  console.log(`signin`);
-  if (typeof window !== "undefined") {
-    signIn("azure-ad-b2c");
-  }
+  useEffect(() => {
+    signIn("azure-ad-b2c", { callbackUrl: "/" });
+  }, []);
 }
