@@ -1,13 +1,17 @@
 "use client";
 
 import { signIn, signOut } from "next-auth/react";
-import React from "react";
+import React, { useEffect } from "react";
 const Com1 = () => {
+  useEffect(() => {
+    fetch("/api/health").then(console.log);
+  });
+
   return (
     <div>
       <button
         onClick={() => {
-          signIn("azure-ad-b2c");
+          signIn("azure-ad-b2c", { callbackUrl: "/" });
         }}
       >
         Sign In

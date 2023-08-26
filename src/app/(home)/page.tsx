@@ -1,7 +1,7 @@
-import { Com1, Com2 } from "@/components";
+import { Com1 } from "@/components";
 import Image from "next/image";
 import { getServerSession } from "next-auth";
-import { authOptions } from "./api/auth/[...nextauth]/route";
+import { authOptions } from "../api/auth/[...nextauth]/route";
 
 export default async function Home() {
   const t = await getServerSession(authOptions);
@@ -12,7 +12,6 @@ export default async function Home() {
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <div>
           <Com1 />
-          <Com2 />
         </div>
       </div>
 
