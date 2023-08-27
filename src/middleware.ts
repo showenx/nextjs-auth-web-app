@@ -1,32 +1,43 @@
 // middleware.ts
 import { getToken } from "next-auth/jwt";
 import { NextFetchEvent, NextRequest, NextResponse } from "next/server";
+import {
+  resolveAuthenticatedResource,
+  validateAuthorizedResource,
+} from "./lib/authHelper";
 
 export async function middleware(request: NextRequest, _next: NextFetchEvent) {
   const { pathname } = request.nextUrl;
+  const resource = resolveAuthenticatedResource(pathname);
+
+  if (!resource) return NextResponse.next();
+
   const token = await getToken({ req: request });
+  const nextUrl = request.nextUrl.clone();
 
-  const protectedPaths = ["/protected"];
-  const matchesProtectedPath = protectedPaths.some((path) =>
-    pathname.startsWith(path),
-  );
-  console.log(`middleware`, pathname, token);
-
-  if (matchesProtectedPath && !token) {
-    const t = request.nextUrl.clone();
-    t.pathname = "/401"
-    return NextResponse.redirect(t);
+  if (!token && resource.type === "AuthenticatedPage") {
+    nextUrl.pathname = "/401"; // login
+    return NextResponse.redirect(nextUrl);
   }
 
-  const protectedApi = ["/api/health"];
-  const matchesProtectedApi = protectedApi.some((path) =>
-    pathname.startsWith(path),
+  if (!token && resource.type === "AuthenticatedApi") {
+    nextUrl.pathname = "/api/auth/unauthorized";
+    return NextResponse.rewrite(nextUrl);
+  }
+
+  const isAuthorized = validateAuthorizedResource(
+    pathname,
+    token?.role as string
   );
 
-  if (matchesProtectedApi && !token) {
-    const t = request.nextUrl.clone();
-    t.pathname = "/api/auth/unauthorized"
-    return NextResponse.rewrite(t)
+  if (!isAuthorized && resource.type === "AuthenticatedPage") {
+    nextUrl.pathname = "/401";
+    return NextResponse.redirect(nextUrl);
+  }
+
+  if (!isAuthorized && resource.type === "AuthenticatedApi") {
+    nextUrl.pathname = "/api/auth/unauthorized";
+    return NextResponse.rewrite(nextUrl);
   }
 
   return NextResponse.next();
