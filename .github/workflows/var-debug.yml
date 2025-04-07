@@ -24,6 +24,7 @@ jobs:
     - name: Debug Specific Variables
       run: |
         echo "Printing specific environment variables..."
-        echo "BASE_URL: $BASE_URL"
-        echo "API_KEY: $API_KEY"
+         echo "BASE_URL: ${{ vars.BASE_URL }}" 
+         echo "BASE_URL: ${{ vars.API_KEY }}" 
+         echo "BASE_URL: ${{ vars.ENABLED }}" 
         echo "environment: ${{github.event.inputs.environment}}"
