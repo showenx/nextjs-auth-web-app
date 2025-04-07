@@ -21,10 +21,13 @@ jobs:
         echo "Printing all environment variables..."
         printenv  # This will print all environment variables available to the workflow
 
-    - name: Debug Specific Variables
+    - name: Debug Specific Variables with env
       run: |
         echo "Printing specific environment variables..."
-         echo "BASE_URL: ${{ vars.BASE_URL }}" 
-         echo "BASE_URL: ${{ vars.API_KEY }}" 
-         echo "BASE_URL: ${{ vars.ENABLED }}" 
-        echo "environment: ${{github.event.inputs.environment}}"
+        echo "BASE_URL: $BASE_URL"  # Accessing the BASE_URL from environment
+        echo "API_KEY: $API_KEY"    # Accessing the API_KEY from environment
+        echo "environment: $environment"  # Accessing the environment input variable
+      env:
+        BASE_URL: ${{ vars.BASE_URL }}  # Explicitly pass BASE_URL to env
+        API_KEY: ${{ secrets.API_KEY }}  # Pass API_KEY from secrets
+        environment: ${{ github.event.inputs.environment }}  # Pass environment from inputs
