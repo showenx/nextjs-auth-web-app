@@ -15,7 +15,7 @@ on:
       comment: 
         type: string
         required: false
-        default: 'dev'
+        default: 'test 12345'
 
 jobs:
   build:
