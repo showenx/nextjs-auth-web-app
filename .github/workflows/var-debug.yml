@@ -16,6 +16,11 @@ on:
         type: string
         required: false
         default: 'test 12345'
+       
+      tags:
+        description: 'Comma-separated list of tags'
+        required: false
+        default: 'v1,v2,v3'
 
 jobs:
   build:
