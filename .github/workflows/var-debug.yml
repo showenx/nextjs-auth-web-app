@@ -4,6 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       environment:
+        description: |
+          This is the name of the person or entity. 
+          You can provide a full name or a username, depending on the context of your workflow.
+          For more information on how to format this field, please refer to the 
+          [documentation](https://example.com/format-guide).
         type: string
         default: 'dev'
 
