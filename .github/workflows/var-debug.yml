@@ -12,6 +12,11 @@ on:
         type: string
         default: 'dev'
 
+      comment: 
+        type: string
+        required: false
+        default: 'dev'
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,10 +26,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Debug All Environment Variables
+    - name: Debug 
       run: |
-        echo "Printing all environment variables..."
-        printenv  # This will print all environment variables available to the workflow
+        echo "comment" ${{ github.event.inputs.environment }}"
 
     - name: Debug Specific Variables with env
       run: |
