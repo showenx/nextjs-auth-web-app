@@ -1,0 +1,29 @@
+name: NodeJS Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: string
+        default: 'dev'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: ${{github.event.inputs.environment}}
+
+   
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Debug All Environment Variables
+      run: |
+        echo "Printing all environment variables..."
+        printenv  # This will print all environment variables available to the workflow
+
+    - name: Debug Specific Variables
+      run: |
+        echo "Printing specific environment variables..."
+        echo "BASE_URL: $BASE_URL"
+        echo "API_KEY: $API_KEY"
+        echo "environment: ${{github.event.inputs.environment}}"
