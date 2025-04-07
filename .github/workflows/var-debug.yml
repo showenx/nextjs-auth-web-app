@@ -17,10 +17,10 @@ on:
         required: false
         default: 'test 12345'
        
-      tags:
-        description: 'Comma-separated list of tags'
-        required: false
-        default: 'v1,v2,v3'
+      environment2:
+        description: 'Environment to run tests against'
+        type: environment
+        required: true
 
 jobs:
   build:
