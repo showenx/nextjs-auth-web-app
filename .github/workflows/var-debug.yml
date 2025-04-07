@@ -28,7 +28,7 @@ jobs:
 
     - name: Debug 
       run: |
-        echo "comment: ${{ github.event.inputs.environment }}"
+        echo "comment: ${{ github.event.inputs.comment }}"
 
     - name: Debug Specific Variables with env
       run: |
