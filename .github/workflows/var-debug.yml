@@ -15,12 +15,12 @@ on:
       comment: 
         description: |
          Cucumber tags to run. Available tags:
-        - @smoke: Quick smoke tests
-        - @regression: Full regression suite
-        - @api: API-related tests
-        - @ui: User interface tests
-        - @payment: Payment processing tests
-        - @user: User management tests
+          - @smoke: Quick smoke tests
+          - @regression: Full regression suite
+          - @api: API-related tests
+          - @ui: User interface tests
+          - @payment: Payment processing tests
+          - @user: User management tests
         type: string
         required: false
         default: 'test 12345'
