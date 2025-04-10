@@ -13,7 +13,11 @@ on:
         default: 'dev'
 
       comment: 
-        description: 'Cucumber tags to run 🏷️ @smoke 🏷️ @regression 🏷️ @api 🏷️ @ui 🔄 Combine: "@smoke and not @wip" or "@api or @ui"'
+        description: |
+          Cucumber tags to run |
+          🏷️ @smoke 🏷️ @regression |
+          🏷️ @api 🏷️ @ui 🔄 Combine: |
+          "@smoke and not @wip" or "@api or @ui"
         required: false
         default: '@smoke'
         type: string
